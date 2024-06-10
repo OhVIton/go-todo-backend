@@ -1,0 +1,17 @@
+services:
+  todo-be:
+    build: docker/dev/go
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app:/var/www
+    env_file:
+      - .go.env
+    networks:
+      - default
+  db:
+    build: docker/dev/mysql
+    ports:
+      - 23306:3306
+    networks:
+      - default
